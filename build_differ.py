@@ -85,7 +85,9 @@ def main():
     linux_x64_build_dir = './csproj/bin/Release/net8.0/linux-x64'
     compress_files(linux_x64_build_dir, f"{dist_dir}/linux-x64-{version}.tar.gz")
 
-    run_command(f"cp -r {linux_x64_build_dir} {bin_dir}")
+    run_command(f"cp -r {dist_dir}/linux-x64-{version}.tar.gz {bin_dir}")
+    run_command(f"tar -xzvf {bin_dir}/linux-x64-{version}.tar.gz")
+    run_command(f"rm {bin_dir}/linux-x64-{version}.tar.gz")
 
     # Compress the Linux ARM64 build
     linux_arm64_build_dir = './csproj/bin/Release/net8.0/linux-arm64'
