@@ -55,6 +55,7 @@ def main():
     print(f"Version: {version}")
 
     dist_dir = "./src/python_redlines/dist/"
+    bin_dir = "./src/python_redlines/bin/"
 
     # Build for Linux x64
     print("Building for Linux x64...")
@@ -83,6 +84,8 @@ def main():
     # Compress the Linux x64 build
     linux_x64_build_dir = './csproj/bin/Release/net8.0/linux-x64'
     compress_files(linux_x64_build_dir, f"{dist_dir}/linux-x64-{version}.tar.gz")
+
+    run_command(f"cp -r {linux_x64_build_dir} {bin_dir}")
 
     # Compress the Linux ARM64 build
     linux_arm64_build_dir = './csproj/bin/Release/net8.0/linux-arm64'
